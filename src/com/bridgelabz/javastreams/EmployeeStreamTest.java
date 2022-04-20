@@ -1,6 +1,9 @@
 package com.bridgelabz.javastreams;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
 import org.junit.Test;
@@ -22,5 +25,22 @@ public class EmployeeStreamTest {
 		};
 
 		empStream.forEach(empConsumer);
+	}
+
+	@Test
+	public void streamTransform() {
+
+		List<Integer> intList = new LinkedList<>();
+
+		for (int i = 0; i < 5; i++) {
+			int num = (int) (Math.random() * 90 + 10);
+			intList.add(num);
+		}
+
+		Stream<Integer> intStream = intList.stream();
+
+		Function<Integer, Double> doubleMap = n -> n.doubleValue();
+
+		intStream.map(doubleMap).forEach(n -> System.out.println(n));
 	}
 }
