@@ -163,6 +163,21 @@ public class EmployeeStreamTest {
 		 */
 	}
 
+	@Test
+	public void streamSort() {
+		List<Integer> intList = new LinkedList<>();
+
+		for (int i = 0; i < 5; i++) {
+			int num = (int) (Math.random() * 90 + 10);
+			intList.add(num);
+		}
+		System.out.println(intList);
+
+		List<Integer> sortedList = intList.stream().sorted((n1, n2) -> n1.compareTo(n2)).collect(Collectors.toList());
+
+		System.out.println(sortedList);
+	}
+
 	public boolean checkPrime(int n) {
 		boolean isPrime = true;
 
