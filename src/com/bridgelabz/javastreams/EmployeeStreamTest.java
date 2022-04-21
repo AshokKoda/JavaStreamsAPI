@@ -81,4 +81,37 @@ public class EmployeeStreamTest {
 
 		intStream.filter(isEven).forEach(System.out::println);
 	}
+
+	@Test
+	public void streamFindFirst() {
+		List<Integer> intList = new LinkedList<>();
+
+		for (int i = 0; i < 5; i++) {
+			int num = (int) (Math.random() * 90 + 10);
+			/*
+			 * while (num % 2 == 0) { num = (int) (Math.random() * 90 + 10); }
+			 */
+			intList.add(num);
+		}
+		System.out.println(intList);
+
+		Stream<Integer> stream = intList.stream();
+
+		int a = stream.filter(n -> checkPrime(n)).findFirst().get();
+
+		System.out.println("First prime number is : " + a);
+	}
+
+	public boolean checkPrime(int n) {
+		boolean isPrime = true;
+
+		for (int i = 2; i < n / 2; i++) {
+			if (n % i == 0) {
+				isPrime = false;
+				break;
+			}
+		}
+
+		return isPrime;
+	}
 }
