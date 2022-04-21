@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.junit.Test;
@@ -42,5 +43,25 @@ public class EmployeeStreamTest {
 		Function<Integer, Double> doubleMap = n -> n.doubleValue();
 
 		intStream.map(doubleMap).forEach(n -> System.out.println(n));
+	}
+
+	@Test
+	public void streamCollect() {
+		List<Integer> intList = new LinkedList<>();
+
+		for (int i = 0; i < 5; i++) {
+			int num = (int) (Math.random() * 90 + 10);
+			intList.add(num);
+		}
+
+		Stream<Integer> intStream = intList.stream();
+
+		Function<Integer, Double> doubleMap = n -> n.doubleValue();
+
+		List<Double> doubleList = new LinkedList<>();
+
+		doubleList = intStream.map(doubleMap).collect(Collectors.toList());
+
+		doubleList.forEach(System.out::println);
 	}
 }
