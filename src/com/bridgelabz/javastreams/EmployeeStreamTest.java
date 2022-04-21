@@ -122,6 +122,25 @@ public class EmployeeStreamTest {
 
 	}
 
+	@Test
+	public void streamReduce() {
+		List<Integer> intList = new LinkedList<>();
+
+		for (int i = 0; i < 5; i++) {
+			int num = (int) (Math.random() * 90 + 10);
+			intList.add(num);
+		}
+		System.out.println(intList);
+
+		int sum = intList.stream().reduce((n1, n2) -> n1 + n2).get();
+
+		int count = (int) intList.stream().count();
+		double avg = (double) sum / count;
+		System.out.println(sum);
+		System.out.println(avg);
+
+	}
+
 	public boolean checkPrime(int n) {
 		boolean isPrime = true;
 
