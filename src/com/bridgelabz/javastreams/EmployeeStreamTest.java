@@ -141,6 +141,28 @@ public class EmployeeStreamTest {
 
 	}
 
+	@Test
+	public void streamMatch() {
+		List<Integer> intList = new LinkedList<>();
+
+		for (int i = 0; i < 5; i++) {
+			int num = (int) (Math.random() * 90 + 10);
+			intList.add(num);
+		}
+		System.out.println(intList);
+
+		System.out.println("All even : " + intList.stream().allMatch(n -> n % 2 == 0));
+		System.out.println("Any one even : " + intList.stream().anyMatch(n -> n % 2 == 0));
+		System.out.println("None even : " + intList.stream().noneMatch(n -> n % 2 == 0));
+		/*
+		 * if (intList.stream().allMatch(n -> n % 2 == 0)) {
+		 * System.out.println("All the numbers are even"); } else { if (intList.stream()
+		 * .anyMatch(n -> n % 2 == 0)) { System.out.println(
+		 * "There are some even numbers in list"); } else { System.out.println(
+		 * "There is no even number in list"); } }
+		 */
+	}
+
 	public boolean checkPrime(int n) {
 		boolean isPrime = true;
 
